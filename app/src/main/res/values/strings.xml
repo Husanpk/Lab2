@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Lab 2</string>
-    <string name ="textbox" translatable="false"> Look at my GUI</string>
-    <string name ="button" translatable="false"> Click Here</string>
-    <string name ="checkbox" translatable="false"> Check this out!</string>
-    <string name ="Switch" translatable="false"> Switch on/off</string>
-    <string name ="EditText" translatable="false"> Type here</string>
+    <string name="textbox" translatable="false"> Look at my GUI</string>
+    <string name="button" translatable="false"> Click Here</string>
+    <string name="checkbox" translatable="false"> Check this out!</string>
+    <string name="Switch" translatable="false"> Switch on/off</string>
+    <string name="EditText" translatable="false"> Type here</string>
 </resources>
