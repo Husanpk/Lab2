@@ -29,7 +29,7 @@ public class ChatAdapter extends ArrayAdapter<Message> {
     public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
 
         if (Message.message == 1){
-            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+            LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(mResource, parent, false);
             ImageView imageView = convertView.findViewById(R.id.imageView);
             TextView texts = convertView.findViewById(R.id.textView);
@@ -39,7 +39,7 @@ public class ChatAdapter extends ArrayAdapter<Message> {
 
         }
          if (Message.message == 2) {
-            LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+             LayoutInflater layoutInflater= (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(mResource, parent, false);
 
             ImageView imageView2 = convertView.findViewById(R.id.imageView2);

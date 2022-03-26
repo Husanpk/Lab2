@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/drawable/drawable_pa.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout-sw720dp-land/activity_chat_room.xml" value="0.24609375" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/activity_chat_room.xml" value="0.264" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/activity_chat_room2.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/activity_empty.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/activity_main.xml" value="0.21105072463768115" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/activity_profile.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/chat_item_left.xml" value="0.2175925925925926" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/chat_room_right.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/fragment_details.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/left.xml" value="0.2" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/recievelayout.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/Lab2/app/src/main/res/layout/right.xml" value="0.264" />

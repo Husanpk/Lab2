@@ -42,4 +42,6 @@ public class MessageDatabase extends SQLiteOpenHelper {
         // Create a new table
         onCreate(sqLiteDatabase);
     }
+
+
 }

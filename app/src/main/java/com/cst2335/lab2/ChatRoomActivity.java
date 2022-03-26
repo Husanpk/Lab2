@@ -1,18 +1,25 @@
 package com.cst2335.lab2;
 
+import static com.cst2335.lab2.MessageDatabase.TABLE_NAME;
 import static com.cst2335.lab2.R.id.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,8 +32,10 @@ EditText editText;
 TextView editSend;
 TextView editRecieve ;
 ListView listView;
+FrameLayout framelayout;
+Boolean showingview;
     private SQLiteDatabase db;
-
+int contentView= R.layout.activity_chat_room;
     ArrayList<Message> arraylist = new ArrayList<>();
 
 
@@ -40,13 +49,14 @@ ListView listView;
         editSend = findViewById(textView);
         editRecieve = findViewById(textView3);
         listView = findViewById(R.id.listView);
+        framelayout = findViewById(frame);
         MessageDatabase dbOpener = new MessageDatabase(this);
         db = dbOpener.getWritableDatabase();
 
 
-        String [] columns = {MessageDatabase.COL_ID, MessageDatabase.COL_CHAT,
+        String[] columns = {MessageDatabase.COL_ID, MessageDatabase.COL_CHAT,
                 MessageDatabase.COL_CHAT_TYPE};
-        Cursor results = db.query(false, MessageDatabase.TABLE_NAME, columns,
+        Cursor results = db.query(false, TABLE_NAME, columns,
                 null, null, null, null, null, null);
 
 
@@ -59,15 +69,13 @@ ListView listView;
 
 
         results.moveToPosition(-1);
-        while(results.moveToNext())
-        {
+        while (results.moveToNext()) {
             String message = results.getString(chatColIndex);
             Boolean messageType = results.getInt(chatTypeColIndex) == 1;
             long id = results.getLong(idColIndex);
 
 
         }
-
 
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +94,7 @@ ListView listView;
                 // Put 1 to stand for true in the COL_CHAT_TYPE column
                 cv.put(MessageDatabase.COL_CHAT_TYPE, 1);
                 // Insert in the database
-                long newId = db.insert(MessageDatabase.TABLE_NAME, null, cv);
+                long newId = db.insert(TABLE_NAME, null, cv);
 
             }
         });
@@ -106,33 +114,54 @@ ListView listView;
             cv.put(MessageDatabase.COL_CHAT, text);
             // Put 1 to stand for true in the COL_CHAT_TYPE column
             cv.put(MessageDatabase.COL_CHAT_TYPE, 1);
+            db.insert(TABLE_NAME, null, cv);
 
+        });
 
-            });
-
-
-
-
+        setOrien(showingview);
         listView.setOnItemLongClickListener((parent, view, position, id) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoomActivity.this);
-            ChatAdapter chatAdapter = new ChatAdapter(this,R.drawable.row_recieve,arraylist);
+
+            ChatAdapter chatAdapter = new ChatAdapter(this, R.drawable.row_recieve, arraylist);
             builder.setTitle("Do you want to delete the message")
-                    .setMessage("The row is: "+position)
+                    .setMessage("The row is: " + position)
                     .setCancelable(false)
                     .setPositiveButton("Yes", (dialog, which) -> {
-                        arraylist.remove(position); //remove the message
+//                        arraylist.remove(position); //remove the message
                         chatAdapter.notifyDataSetChanged();
                     })
                     .setNegativeButton("No", (dialog, which) -> {
 
                     });
-            AlertDialog dialog  = builder.create();
+            AlertDialog dialog = builder.create();
             dialog.show();
+
+
+if(showingview==true){
+    DetailsFragment fregmentone = new DetailsFragment();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    transaction.replace(R.id.framelayout, fregmentone);
+    transaction.commit();
+}
             return true;
         });
 
-
     }
+
+    public boolean setOrien(Boolean showingview){
+        if (framelayout == null) {
+
+
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            showingview=false;
+        } else {
+            setContentView(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+            showingview=true;
+        }
+      return  showingview;
+    }
+
 
     public void printCursor(Cursor cus) {
         // Database Version
